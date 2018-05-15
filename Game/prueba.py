@@ -146,6 +146,8 @@ play_menu = pygameMenu.Menu(surface,
                             window_height=WINDOW_SIZE[1],
                             window_width=WINDOW_SIZE[0]
                             )
+
+
 # When pressing return -> play(DIFFICULTY[0], font)
 """
 play_menu.add_option('Start', play_function, DIFFICULTY,
@@ -158,6 +160,30 @@ play_menu.add_selector('Select difficulty', [('Easy', 'EASY'),
                        onchange=change_difficulty)
 """
 play_menu.add_option('Return to main menu', PYGAME_MENU_BACK)
+#HIGH SCORE MENU
+high_score_menu = pygameMenu.TextMenu(surface,
+                                 bgfun=main_background,
+                                 color_selected=COLOR_WHITE,
+                                 font=pygameMenu.fonts.FONT_BEBAS,
+                                 font_color=COLOR_BLACK,
+                                 font_size_title=30,
+                                 font_title=pygameMenu.fonts.FONT_8BIT,
+                                 menu_alpha=10,
+                                 #menu_color=MENU_BACKGROUND_COLOR,
+                                 menu_color_title=COLOR_WHITE,
+                                 menu_height=int(WINDOW_SIZE[1]),
+                                 menu_width=int(WINDOW_SIZE[0] ),
+                                 onclose=PYGAME_MENU_DISABLE_CLOSE,
+                                 option_shadow=False,
+                                 text_color=COLOR_BLACK,
+                                 text_fontsize=20,
+                                 title='High Scores',
+                                 window_height=WINDOW_SIZE[1],
+                                 window_width=WINDOW_SIZE[0]
+                                 )
+
+high_score_menu.add_option('Return to menu', PYGAME_MENU_BACK)
+
 
 # ABOUT MENU
 about_menu = pygameMenu.TextMenu(surface,
@@ -202,9 +228,10 @@ main_menu = pygameMenu.Menu(surface,
                             window_height=WINDOW_SIZE[1],
                             window_width=WINDOW_SIZE[0]
                             )
-main_menu.add_option('Play', play_menu)
-main_menu.add_option('About', about_menu)
-main_menu.add_option('Quit', PYGAME_MENU_EXIT)
+main_menu.add_option('Start', play_menu)
+main_menu.add_option('High Scores',high_score_menu)
+main_menu.add_option('Description', about_menu)
+main_menu.add_option('Exit', PYGAME_MENU_EXIT)
 
 # -----------------------------------------------------------------------------
 # Main loop
