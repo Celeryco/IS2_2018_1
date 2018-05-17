@@ -3,7 +3,7 @@ import pygame
 
 pygame.init() #iniciar pygame
 #tamaño de fuentes
-pequenafuente=pygame.font.SysFont("comicsansms",15)
+pequenafuente = pygame.font.SysFont("comicsansms",15)
 #display size
 display_width=800
 display_height=600
@@ -12,11 +12,11 @@ size=display_width,display_height
 white_color=(255,255,255)
 black_color=(0,0,0)
 red_color=(255,0,0)
-blue_color=(0,0,255)
+blue_color=(155, 193, 255)
 green_color=(0,255,0)
 yellow_color=(255,255,0)
 
-display=pygame.display.set_mode((display_width,display_height)) #tamaño de la ventana
+display = pygame.display.set_mode((display_width,display_height)) #tamaño de la ventana
 pygame.display.set_caption("Hola mundo")   #titulo de la ventana
 clock=pygame.time.Clock()
 ##
@@ -28,26 +28,25 @@ fondo=pygame.transform.scale(fondo,size)
 #tamaño de botones
 TamBoton=[200,45]
 ##Boton 1
-Boton1=[300,280]
-ColorBoton1=[red_color,blue_color]
+Boton1 = [300,280]
+ColorBoton1=[red_color, blue_color]
 ##Boton 2
-Boton2=[300,340]
-ColorBoton2=[yellow_color,green_color]
+Boton2 = [300,340]
+ColorBoton2 = [yellow_color, green_color]
 ##Boton 3
-Boton3=[300,400]
-ColorBoton3=[black_color,blue_color]
+Boton3 = [300, 400]
+ColorBoton3 = [black_color, blue_color]
 ##Boton 4
-Boton4=[300,460]
-ColorBoton4=[green_color,red_color]
+Boton4 = [300, 460]
+ColorBoton4 = [green_color, red_color]
 
 ##crear botones aleatorios
-def botones(texto,superficie,estado,posicionamiento,tam,identidad=None):
+def botones(texto, superficie, estado, posicionamiento, tam, identidad = None):
     cursor= pygame.mouse.get_pos()
     click =pygame.mouse.get_pressed()
 
-
-    if posicionamiento[0]+tam[0] >cursor[0] > tam[0] and posicionamiento[1] + tam[1] > cursor[1] >tam[1] and posicionamiento[1] + tam[1] < cursor [1] + tam[1]:
-        if click[0]==1:
+    if posicionamiento[0] + tam[0] > cursor[0] > tam[0] and posicionamiento[1] + tam[1] > cursor[1] >tam[1] and posicionamiento[1] + tam[1] < cursor [1] + tam[1]:
+        if click[0] == 1:
             if identidad=="start":
                 pass
             elif identidad=="high_scores":
@@ -61,6 +60,7 @@ def botones(texto,superficie,estado,posicionamiento,tam,identidad=None):
         boton= pygame.draw.rect(superficie,estado[0],(posicionamiento[0],posicionamiento[1],tam[0],tam[1]))
     textBoton(texto,black_color,posicionamiento[0],posicionamiento[1],tam[0],tam[1])
     return boton
+
 ##crear el mensaje dentro de los botones
 def textBoton(msg,color,BotonX,BotonY,Ancho,Alto,tamano="pequeno"):
     textoSuperficie,textoRect=objetotexto(msg,color,tamano)

@@ -9,6 +9,7 @@ class ScreenTablero:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
     def update(self):
         pass
     def render(self):
