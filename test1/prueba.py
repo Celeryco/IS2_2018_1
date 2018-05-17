@@ -26,7 +26,7 @@ fondo=pygame.transform.scale(fondo,size)
 
 ####Datos de los botones
 #tamaño de botones
-TamBoton=[200,45]
+TamBoton=[300,45]
 ##Boton 1
 Boton1 = [300,280]
 ColorBoton1=[red_color, blue_color]

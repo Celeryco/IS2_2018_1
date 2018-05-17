@@ -117,6 +117,41 @@ def play_function(difficulty, font):
         pygame.display.flip()
 
 """
+def description_screen():
+
+    bg_color = random_color()
+    f_width = f.get_size()[0]
+
+
+    main_menu.disable()
+    main_menu.reset(1)
+
+
+    while True:
+
+        # Clock tick
+        clock.tick(60)
+
+        # Application events
+        playevents = pygame.event.get()
+        for e in playevents:
+            if e.type == QUIT:
+                exit()
+            elif e.type == KEYDOWN:
+                if e.key == K_ESCAPE:
+                    if main_menu.is_disabled():
+                        main_menu.enable()
+
+                        # Quit this function, then skip to loop of main-menu on line 197
+                        return
+
+        # Pass events to main_menu
+        main_menu.mainloop(playevents)
+
+        # Continue playing
+        surface.fill(bg_color)
+        pygame.display.flip()
+
 
 def main_background():
     """
@@ -186,6 +221,7 @@ high_score_menu.add_option('Return to menu', PYGAME_MENU_BACK)
 
 
 # ABOUT MENU
+"""
 about_menu = pygameMenu.TextMenu(surface,
                                  bgfun=main_background,
                                  color_selected=COLOR_WHITE,
@@ -210,7 +246,7 @@ for m in ABOUT:
     about_menu.add_line(m)
 about_menu.add_line(PYGAMEMENU_TEXT_NEWLINE)
 about_menu.add_option('Return to menu', PYGAME_MENU_BACK)
-
+"""
 # MAIN MENU
 main_menu = pygameMenu.Menu(surface,
                             bgfun=main_background,
@@ -230,7 +266,7 @@ main_menu = pygameMenu.Menu(surface,
                             )
 main_menu.add_option('Start', play_menu)
 main_menu.add_option('High Scores',high_score_menu)
-main_menu.add_option('Description', about_menu)
+main_menu.add_option('Description', description_screen)
 main_menu.add_option('Exit', PYGAME_MENU_EXIT)
 
 # -----------------------------------------------------------------------------
