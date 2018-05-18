@@ -10,9 +10,6 @@ red_color=(255,0,0)
 ##
 
 
-
-pequenafuente=pygame.font.SysFont("comicsansms",15)
-
 display=pygame.display.set_mode((display_width,display_height)) #tamaño de la ventana
 
 clock=pygame.time.Clock()
