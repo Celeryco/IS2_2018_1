@@ -187,26 +187,26 @@ enemy_1_desc = "Espacio para enemigos"
 title_font = pygame.font.Font(None, 40)
 title = title_font.render("Instrucciones", 0 , (0,0,0))
 
-title_powerups_font = pygame.font.Font(None, 25)
+title_powerups_font = pygame.font.Font(None, 15)
 title_powerups = title_powerups_font.render("Powerups", 1 , (0,0,0))
 
-title_enemies_font = pygame.font.Font(None, 25)
+title_enemies_font = pygame.font.Font(None, 15)
 title_enemies = title_enemies_font.render("Enemigos", 2 , (0,0,0))
 ##funciiones de eros
 def powerups_draw(position_x, position_y):
     pos_x = position_x
     pos_y = position_y
-    desc_font = pygame.font.Font(None, 20)
+    desc_font = pygame.font.Font(None, 15)
 
     for powerup in arrayPowerups:
 
-        powerup.image = pygame.transform.scale(powerup.image, (40, 40))
+        powerup.image = pygame.transform.scale(powerup.image, (20, 40))
         desc_powerup = desc_font.render(powerup.description , 0 , (0,0,0))
 
         surface.blit(powerup.image,(pos_x, pos_y))
-        surface.blit(desc_powerup, (pos_x + 50, pos_y + 15))
+        surface.blit(desc_powerup, (pos_x + 33, pos_y + 15))
 
-        pos_y = pos_y + 50
+        pos_y = pos_y + 33
 
 def enemies_draw(position_x, position_y):
     pos_x = position_x
@@ -214,13 +214,13 @@ def enemies_draw(position_x, position_y):
     desc_font = pygame.font.Font(None, 20)
 
     for x in range(0,5):
-        enemy_image = pygame.transform.scale(enemy_1, (40, 40))
+        enemy_image = pygame.transform.scale(enemy_1, (20, 40))
         enemy_desc = desc_font.render(enemy_1_desc , 0 , (0,0,0))
 
         surface.blit(enemy_image,(pos_x, pos_y))
-        surface.blit(enemy_desc, (pos_x + 50, pos_y + 15))
+        surface.blit(enemy_desc, (pos_x + 32, pos_y + 15))
 
-        pos_y = pos_y + 50
+        pos_y = pos_y + 32
 
 
 ##
@@ -254,12 +254,12 @@ def instructions():
         main_menu.mainloop(playevents)
         # Continue playing
         surface.fill(red_color)
-        surface.blit(title, (300, 30))
+        surface.blit(title, (100, 30))
         surface.blit(title_powerups, (170, 70))
-        surface.blit(title_enemies, (600, 70))
+        surface.blit(title_enemies, (400, 70))
 
         powerups_draw(40,100)
-        enemies_draw(500, 100)
+        enemies_draw(400, 100)
 
         pygame.display.flip()
 
