@@ -11,18 +11,21 @@ size=display_width,display_height
 #ancho del barco
 ship_width=140
 ship_height=83
+
 #dar color a la ventana RGB ,en una tupla
 white_color=(255,255,255)
 black_color=(0,0,0)
+
 #########################################
 display=pygame.display.set_mode((display_width,display_height)) #tamaño de la ventana
 pygame.display.set_caption("Prueba 1.1")   #titulo de la ventana
-clock=pygame.time.Clock()
+clock = pygame.time.Clock()
 #obtener imgaen del barco
-shipImg=pygame.image.load('ship.png')
+shipImg = pygame.image.load('ship.png')
 #obtener imagen del fondo
-fondo=pygame.image.load('fondo.jpeg')
-fondo=pygame.transform.scale(fondo,size)
+fondo = pygame.image.load('fondo.jpeg')
+
+fondo = pygame.transform.scale(fondo,size)
 ##
 def things(thingx,thingy,thingw,thingh,color):
     pygame.draw.rect(display,color,[thingx,thingy,thingw,thingh])
@@ -31,17 +34,16 @@ def ship(x,y):
     display.blit(shipImg,(x,y))
 
 def text_objects(text,font):
-    textSurface=font.render(text,True,black_color)
+    textSurface = font.render(text,True,black_color)
     return textSurface,textSurface.get_rect()
 
 def message_display(text):
-    largeText=pygame.font.Font("freesansbold.ttf",115)
+    largeText = pygame.font.Font("freesansbold.ttf",115)
     TextSurf,TextRect=text_objects(text,largeText)
     TextRect.center=((display_width/2),(display_height/2))
     display.blit(TextSurf,TextRect)
 
     pygame.display.update()
-
     time.sleep(2)
     #para resetear el pygame
     pygame.event.clear()
