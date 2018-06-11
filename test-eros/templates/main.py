@@ -1,8 +1,9 @@
 import pygame as pg
 import sys
+from os import path
 from settings import *
 from sprites import *
-from os import path
+
 class Game:
     def __init__(self):
         pg.init()
@@ -19,17 +20,16 @@ class Game:
             for line in f:
                 self.map_data.append(line)
 
-
     def new(self):
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         for row, tiles in enumerate(self.map_data):
-            for column, tile in enumerate(tiles):
+            for col, tile in enumerate(tiles):
                 if tile == '1':
-                    Wall(self, column, row)
+                    Wall(self, col, row)
                 if tile == 'P':
-                    self.player = Player(self, column, row)
+                    self.player = Player(self, col, row)
 
     def run(self):
         # game loop - set self.playing = False to end the game
@@ -50,9 +50,9 @@ class Game:
 
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
-            pg.draw.line(self.screen, LIGHTGREY, (x,0), (x, HEIGHT))
+            pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, TILESIZE):
-            pg.draw.line(self.screen, LIGHTGREY, (0,y), (WIDTH, y))
+            pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
 
     def draw(self):
         self.screen.fill(BGCOLOR)
@@ -68,14 +68,6 @@ class Game:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
-                if event.key == pg.K_LEFT:
-                    self.player.move(dx=-1)
-                if event.key == pg.K_RIGHT:
-                    self.player.move(dx=1)
-                if event.key == pg.K_UP:
-                    self.player.move(dy=-1)
-                if event.key == pg.K_DOWN:
-                    self.player.move(dy=1)
 
     def show_start_screen(self):
         pass
