@@ -17,5 +17,6 @@ def main():
     state_dict = {"MAIN_MENU" : main_menu.MainMenu(),
                   "INSTRUCTIONS"  : instructions_menu.InstructionsMenu(),
                   }
+                  
     run_it.setup_states(state_dict, "MAIN_MENU")
     run_it.main()
