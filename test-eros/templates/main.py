@@ -6,8 +6,6 @@ from sprites import *
 from tilemap import *
 
 class Game:
-
-
     def __init__(self, player_name):
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
@@ -33,6 +31,7 @@ class Game:
     def load_data(self):
         game_folder = path.dirname(__file__)
         self.map = Map(path.join(game_folder, 'map.txt'))
+        self.player_img = pg.image.load("../resources/images/quintana.png").convert_alpha()
 
     def new(self):
         # initialize all variables and do all the setup for a new game
@@ -71,7 +70,6 @@ class Game:
             pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
 
     def draw(self):
-
         self.screen.fill(BGCOLOR)
         self.draw_grid()
         self.all_sprites.draw(self.screen)
@@ -136,10 +134,10 @@ class Menu:
 
 
     def load_buttons(self):
-        self.button_start = Button(self.screen, "START", 450, 340, 140, 50, 35, 15, 2)
-        self.button_instructions = Button(self.screen, "INSTRUCTIONS", 425, 420, 190, 50, 10, 15, 2)
-        self.button_high_score = Button(self.screen, "HIGH SCORE", 440, 500, 160, 50, 10, 15, 2)
-        self.button_quit = Button(self.screen, "QUIT", 450, 580, 140, 50, 45, 15, 2)
+        self.button_start = Button(self.screen, "START", 450, 340, 140, 50, 25, 15, 2)
+        self.button_instructions = Button(self.screen, "INSTRUCTIONS", 425, 420, 230, 50, 10, 15, 2)
+        self.button_high_score = Button(self.screen, "HIGH SCORE", 440, 500, 200, 50, 10, 15, 2)
+        self.button_quit = Button(self.screen, "QUIT", 450, 580, 140, 50, 35, 15, 2)
         self.input = Input(self.screen, "", 425, 250, 190, 50, 20, 15, 2, 11)
 
     def play_music(self):
