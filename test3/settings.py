@@ -22,4 +22,4 @@ GRIDHEIGHT=HEIGHT/TILESIZE
 
 ##player spped
 PLAYER_SPEED=100
-PLAYER_IMG='kate.png'
+PLAYER_IMG='quintana.png'
