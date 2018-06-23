@@ -1,4 +1,4 @@
-class Powerup():
-    def __init__(self, image, description):
-        self.image = image
-        self.description = description
+class Powerup:
+    def __init__(self, sprite, effect):
+        self.sprite = sprite
+        self.effect = effect
