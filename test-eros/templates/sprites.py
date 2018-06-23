@@ -22,8 +22,8 @@ class Player(pg.sprite.Sprite):
         self.up_states = { 0: (0, 228, 52, 76), 1: (52, 228, 52, 76), 2: (156, 228, 52, 76) }
         self.down_states = { 0: (0, 0, 52, 76), 1: (52, 0, 52, 76), 2: (156, 0, 52, 76) }
 
-        self.vel=vec(0,0)
-        self.pos=vec(x,y) * TILESIZE
+        self.vel = vec(0,0)
+        self.pos = vec(x,y) * TILESIZE
         self.state = 0
         # Reemplaza
         # self.vx, self.vy = 0, 0

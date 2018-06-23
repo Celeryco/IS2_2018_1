@@ -2,7 +2,8 @@ import pygame as pg
 from settings import *
 
 class WallView(pg.sprite.Sprite):
-    def __init__(self, game, x, y):
+    def __init__(self, wall, game, x, y):
+        self.wall = wall
         self.groups = game.all_sprites, game.walls
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
