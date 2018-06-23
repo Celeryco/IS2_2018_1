@@ -6,8 +6,6 @@ from sprites import *
 from tilemap import *
 
 class Game:
-
-
     def __init__(self, player_name):
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
