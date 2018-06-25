@@ -195,7 +195,6 @@ class Menu:
 
 
 class Button():
-
     def __init__(self, screen, text, x, y, width, height, padding_x, padding_y, border):
         self.screen = screen
         self.text = text

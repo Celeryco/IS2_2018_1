@@ -1,10 +1,8 @@
 """
 This module initializes the display and creates dictionaries of resources.
 """
-
 import os
 import pygame as pg
-
 from . import tools
 
 # define some colors (R, G, B)
@@ -35,12 +33,9 @@ PLAYER_SPEED = 200
 pg.init()
 os.environ['SDL_VIDEO_CENTERED'] = "TRUE"
 pg.display.set_caption(TITLE)
-SCREEN = pg.display.set_mode(SCREEN_SIZE)
-SCREEN.fill(BGCOLOR)
-
-SCREEN_RECT = SCREEN.get_rect()
-
-
+# SCREEN = pg.display.set_mode(SCREEN_SIZE)
+# SCREEN.fill(BGCOLOR)
+# SCREEN_RECT = SCREEN.get_rect()
 
 #Resource loading (Fonts and music just contain path names).
 FONTS = tools.load_all_fonts(os.path.join("resources", "fonts"))

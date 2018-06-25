@@ -6,9 +6,8 @@ the tools.Control class.  All modifications should occur in this module
 and in the prepare module.
 """
 
-from .import settings, tools
+from . import settings, tools
 from .states import main_menu, instructions_menu, game
-
 
 def main():
     """Add states to control here."""
