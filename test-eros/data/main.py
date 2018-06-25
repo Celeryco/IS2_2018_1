@@ -7,7 +7,7 @@ and in the prepare module.
 """
 
 from .import settings, tools
-from .states import main_menu, instructions_menu
+from .states import main_menu, instructions_menu, game
 
 
 def main():
@@ -16,7 +16,8 @@ def main():
 
     state_dict = {"MAIN_MENU" : main_menu.MainMenu(),
                   "INSTRUCTIONS"  : instructions_menu.InstructionsMenu(),
+                  "GAME" : game.Game()
                   }
-                  
     run_it.setup_states(state_dict, "MAIN_MENU")
+    
     run_it.main()

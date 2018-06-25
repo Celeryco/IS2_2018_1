@@ -5,6 +5,8 @@ from settings import *
 from sprites import *
 from tilemap import *
 
+from ..import settings, tools
+
 class Game:
     def __init__(self, player_name):
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -123,6 +125,8 @@ class Game:
 
 
 class Menu:
+
+
     def __init__(self):
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE_MENU)
@@ -152,6 +156,7 @@ class Menu:
             if event.type == pg.QUIT:
                 sys.exit()
 
+
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_BACKSPACE:
                     self.input.delete()
@@ -168,12 +173,15 @@ class Menu:
 
     def draw(self):
         self.screen.fill(BGCOLOR)
+
         #Draw Button
         self.button_start.draw()
         self.button_instructions.draw()
         self.button_high_score.draw()
         self.button_quit.draw()
         self.input.draw()
+
+
         pg.display.flip()
 
 

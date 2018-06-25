@@ -6,7 +6,6 @@ for States.  Also contained here are resource loading functions.
 import os
 import pygame as pg
 
-
 class Control(object):
     """Control class for entire project. Contains the game loop, and contains
     the event_loop which passes events to States as needed. Logic for flipping

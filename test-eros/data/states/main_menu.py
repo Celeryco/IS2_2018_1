@@ -1,18 +1,18 @@
 import pygame as pg
 
 from ..import settings, tools
-from ..libraries import PygButton as pygbutton
 
 class MainMenu(tools._State):
     """Scene that plays our intro movie."""
     def __init__(self):
         tools._State.__init__(self)
         self.next = None
-        self.play_button = pygbutton.PygButton((settings.WIDTH/2, settings.HEIGHT / 2, settings.WIDTH/2, settings.HEIGHT / 2), 'Jugar')
-        self.highscore_button = pygbutton.PygButton((50, 150, 60, 30), 'Highscore')
+        self.bgm = prepare.MUSIC["menu"]
         self.font = pg.font.Font(settings.FONTS["Fixedsys500c"], 50)
         self.blink = False
         self.timer = 0.0
+        self.play_music()
+        self.load_buttons()
 
     def startup(self, current_time, persistant):
         """Load and play the movie on scene start."""
@@ -31,21 +31,30 @@ class MainMenu(tools._State):
     def get_event(self, event):
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                self.quit()
+                self.done = True
             if event.type == pg.KEYDOWN:
-                if event.key == pg.K_ESCAPE:
-                    self.quit()
-                    
-            if 'click' in self.play_button.handleEvent(event):
-                settings.BGCOLOR = settings.GREEN
-            if 'click' in self.highscore_button.handleEvent(event):
-                print("Click en boton highscore")
+                if event.key == pg.K_BACKSPACE:
+                    self.input.delete()
+                else:
+                    self.input.add(event.unicode)
+
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                mouse_position = pg.mouse.get_pos()
+                self.button_start.click(mouse_position, self.start)
+                self.button_instructions.click(mouse_position, self.instructions)
+                self.button_high_score.click(mouse_position, self.high_score)
+                self.button_quit.click(mouse_position, self.quit)
 
     def draw(self, surface):
         """Blit all items to the surface including the movie."""
-        self.play_button.draw(settings.SCREEN)
-        self.highscore_button.draw(settings.SCREEN)
-
+        self.screen.fill(settings.BGCOLOR)
+        #Draw Button
+        self.button_start.draw()
+        self.button_instructions.draw()
+        self.button_high_score.draw()
+        self.button_quit.draw()
+        self.input.draw()
+        pg.display.flip()
 
 
     def update(self, surface, keys, current_time, time_delta):
@@ -56,32 +65,9 @@ class MainMenu(tools._State):
             self.timer = self.current_time
         self.draw(surface)
 
-# def define_text(self, msg, color, position_x, position_y, width, height, dimension = "pequeno"):
-#     surface_text, rect_text = create_text(msg, color, dimension)
-#     textoRect.center=(BotonX+(Ancho/2),BotonY+(Alto/2))
-#     surface.blit(textoSuperficie,textoRect)
-#
-# def create_text(self, text, color, dimension):
-#     if dimension == "pequeno":
-#         surface_text = pequenafuente.render(texto,True,color)
-#     return textoSuperficie,textoSuperficie.get_rect()
-#
-# def create_buttons(text,surface, state, position, dimension, identity=None):
-#     mouse = pygame.mouse.get_pos()
-#     click = pygame.mouse.get_pressed()
-#
-#     if position[0]+dimension[0] >mouse[0] > dimension[0] and position[1] + dimension[1] > mouse[1] >dimension[1] and position[1] + dimension[1] < mouse [1] + dimension[1]:
-#         if click[0]==1:
-#             if identity =="INSTRUCTIONS":
-#                 instructions()
-#             elif identity =="MAIN_MENU":
-#                 if main_menu.is_disabled():
-#                     main_menu.enable()
-#
-#         button = pygame.draw.rect(surface,state[1],(position[0],position[1],dimension[0],dimension[1]))
-#     else:
-#         button = pygame.draw.rect(surface,state[0],(position[0],position[1],dimension[0],dimension[1]))
-#
-#     define_text(texto, black_color,position[0],position[1],dimension[0],dimension[1])
-#
-#     return boton
+    def load_buttons(self):
+        self.button_start = Button(self.screen, "START", 450, 340, 140, 50, 25, 15, 2)
+        self.button_instructions = Button(self.screen, "INSTRUCTIONS", 425, 420, 230, 50, 10, 15, 2)
+        self.button_high_score = Button(self.screen, "HIGH SCORE", 440, 500, 200, 50, 10, 15, 2)
+        self.button_quit = Button(self.screen, "QUIT", 450, 580, 140, 50, 35, 15, 2)
+        self.input = Input(self.screen, "", 425, 250, 190, 50, 20, 15, 2, 11)
