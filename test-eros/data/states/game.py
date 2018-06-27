@@ -1,9 +1,11 @@
 import pygame as pg
 import sys
+import random
 from os import path
 from ..import settings, tools
-from ..models import player, character, bomb, map, wall, powerup
-from ..views import character_view, bomb_view, fire_view, map_view, wall_view, powerup_view
+from ..models import player, character, bomb, map, wall, powerup, enemy
+from ..views import character_view, bomb_view, fire_view, map_view, wall_view, powerup_view, enemy_view
+
 
 class Game(tools._State):
     def __init__(self):
@@ -34,19 +36,19 @@ class Game(tools._State):
 
     def load_data(self):
         game_folder = path.dirname(__file__)
-        # View?
         self.map = map_view.MapView(path.join(game_folder, 'map.txt'))
-        # self.character_img = pg.image.load("../resources/images/quintana.png").convert_alpha()
 
     def new(self):
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.powerups = pg.sprite.Group()
+        self.enemies = pg.sprite.Group()
         for row, tiles in enumerate(self.map.data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    wall_model = wall.Wall()
+                    breakable = bool(random.getrandbits(1))
+                    wall_model = wall.Wall(breakable)
                     wall_view.WallView(wall_model, self, col, row)
                 if tile == 'P':
                     self.character = character.Character(settings.GFX['quintana'])
@@ -57,6 +59,10 @@ class Game(tools._State):
                 if tile == 'S':
                     powerup_model = powerup.Powerup(settings.GFX['speed-up'], "speed", 10)
                     powerup_view.PowerupView(powerup_model, self, col, row)
+                if tile == 'E':
+                    self.enemy = enemy.Enemy(settings.GFX['inca'])
+                    self.enemy_v = enemy_view.EnemyView(self.enemy, self, col, row)
+
 
     def get_event(self, event):
         # catch all events here

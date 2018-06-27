@@ -7,7 +7,7 @@ from . import fire_view
 class BombView(pg.sprite.Sprite):
     def __init__(self, bomb, game, x, y):
         self.bomb = bomb
-        self.groups = game.all_sprites, game.walls
+        self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = self.bomb.sprite
@@ -31,8 +31,16 @@ class BombView(pg.sprite.Sprite):
         fire_model = Fire(GFX['fire'])
         self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y))
         for i in range(self.level):
-            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y - TILESIZE * i) )
-            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x - TILESIZE * i, self.rect.y) )
-            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x + TILESIZE * i, self.rect.y) )
-            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y + TILESIZE * i) )
+            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y - TILESIZE * i))
+            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x - TILESIZE * i, self.rect.y))
+            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x + TILESIZE * i, self.rect.y))
+            self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y + TILESIZE * i))
+            for fire in self.fires:
+                pg.sprite.spritecollide(fire, self.game.enemies, True)
+
+                hits = pg.sprite.spritecollide(fire, self.game.walls, False)
+                if hits:
+                    if hits[0].wall.isBreakable:
+                        hits[0].kill()
+
         self.kill()

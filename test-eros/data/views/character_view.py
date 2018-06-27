@@ -44,8 +44,6 @@ class CharacterView(pg.sprite.Sprite):
     def get_keys(self):
         if self.state : return
         self.vel=vec(0,0)
-        # Reemplaza
-        # self.vx, self.vy = 0, 0
         keys = pg.key.get_pressed()
         if keys[pg.K_LEFT] or keys[pg.K_a]:
             self.clip(self.left_states)
@@ -64,7 +62,7 @@ class CharacterView(pg.sprite.Sprite):
             self.vel.y = settings.PLAYER_SPEED
             self.image = self.image_alpha.subsurface(self.image_alpha.get_clip())
 
-    def update(self, ):
+    def update(self):
         self.get_keys()
         self.pos+= self.vel * self.game.dt
         self.rect.x = self.pos.x
@@ -94,12 +92,11 @@ class CharacterView(pg.sprite.Sprite):
                 self.rect.y = self.pos.y
 
     def collide_with_powerup(self):
-        hits = pg.sprite.spritecollide(self, self.game.powerups, False)
+        hits = pg.sprite.spritecollide(self, self.game.powerups, True)
         if hits:
-            print(hits[0].powerup.type)
             if hits[0].powerup.type == "fire":
                 self.character.fire_lvl += hits[0].powerup.modifier
-                hits[0].kill()
+                # hits[0].kill()
             if hits[0].powerup.type == "speed":
                 self.character.speed_lvl += hits[0].powerup.modifier
-                hits[0].kill()
+                # hits[0].kill()
