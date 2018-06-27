@@ -7,9 +7,9 @@ class InstructionsMenu(tools._State):
         tools._State.__init__(self)
         self.next = 'game'
     def cleanup(self):
-        print('cleaning up Menu state stuff')
+        print('Cleaning up Menu state stuff')
     def startup(self):
-        print('starting Menu state stuff')
+        print('Starting Menu state stuff')
     def get_event(self, event):
         if event.type == pg.KEYDOWN:
             print('Menu State keydown')

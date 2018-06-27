@@ -7,7 +7,7 @@ and in the prepare module.
 """
 
 from . import settings, tools
-from .states import main_menu, instructions_menu, game
+from .states import main_menu, instructions_menu, game, high_score
 
 def main():
     """Add states to control here."""
@@ -15,8 +15,9 @@ def main():
 
     state_dict = {"MAIN_MENU" : main_menu.MainMenu(),
                   "INSTRUCTIONS"  : instructions_menu.InstructionsMenu(),
-                  "GAME" : game.Game()
+                  "GAME" : game.Game(),
+                  "HIGH_SCORE" : high_score.HighScore()
                   }
+
     run_it.setup_states(state_dict, "MAIN_MENU")
-    
     run_it.main()

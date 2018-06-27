@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import *
+from ..settings import *
 
 class WallView(pg.sprite.Sprite):
     def __init__(self, wall, game, x, y):

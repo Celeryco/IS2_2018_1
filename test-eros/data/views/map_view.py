@@ -1,5 +1,5 @@
 import pygame as py
-from settings import *
+from ..settings import *
 
 class MapView:
     def __init__(self, filename):

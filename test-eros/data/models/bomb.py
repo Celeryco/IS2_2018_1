@@ -1,4 +1,4 @@
 class Bomb:
-    def __init__(self, sprite_url, fire_lvl):
-        self.sprite_url = sprite_url
+    def __init__(self, sprite, fire_lvl = 4):
+        self.sprite = sprite
         self.fire_lvl = fire_lvl

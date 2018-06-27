@@ -15,8 +15,8 @@ RED = (255, 0, 0)
 YELLOW = (255, 255, 0)
 
 # game settings
-WIDTH = 1024   # 16 * 64 or 32 * 32 or 64 * 16
-HEIGHT = 768  # 16 * 48 or 32 * 24 or 64 * 12
+WIDTH = 800   # 16 * 64 or 32 * 32 or 64 * 16
+HEIGHT = 608 # 16 * 48 or 32 * 24 or 64 * 12
 SCREEN_SIZE = (WIDTH, HEIGHT)
 FPS = 60
 TITLE = "Peruvian Heart Deluxe Edition"
@@ -33,13 +33,13 @@ PLAYER_SPEED = 200
 pg.init()
 os.environ['SDL_VIDEO_CENTERED'] = "TRUE"
 pg.display.set_caption(TITLE)
-# SCREEN = pg.display.set_mode(SCREEN_SIZE)
-# SCREEN.fill(BGCOLOR)
-# SCREEN_RECT = SCREEN.get_rect()
+SCREEN = pg.display.set_mode(SCREEN_SIZE)
+SCREEN.fill(BGCOLOR)
+SCREEN_RECT = SCREEN.get_rect()
 
 #Resource loading (Fonts and music just contain path names).
 FONTS = tools.load_all_fonts(os.path.join("resources", "fonts"))
 MUSIC = tools.load_all_music(os.path.join("resources", "music"))
+GFX   = tools.load_all_gfx(os.path.join("resources", "graphics"))
 # SFX   = tools.load_all_sfx(os.path.join("resources", "sound"))
-# GFX   = tools.load_all_gfx(os.path.join("resources", "graphics"))
 # MOV   = tools.load_all_movies(os.path.join("resources", "movies"))

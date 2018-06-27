@@ -1,5 +1,6 @@
 import pygame as pg
-from settings import *
+from .. import settings
+vec = pg.math.Vector2
 
 class CharacterView(pg.sprite.Sprite):
     def __init__(self, character, game, x, y):
@@ -7,8 +8,9 @@ class CharacterView(pg.sprite.Sprite):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self.game.player_img.set_clip(pg.Rect(0, 0, 52, 76))
-        self.image = self.game.player_img.subsurface(self.game.player_img.get_clip())
+        self.image_alpha = self.character.character_img
+        self.image_alpha.set_clip(pg.Rect(0, 0, 52, 76))
+        self.image = self.image_alpha.subsurface(self.image_alpha.get_clip())
         self.rect = self.image.get_rect()
         self.frame = 0
 
@@ -18,7 +20,7 @@ class CharacterView(pg.sprite.Sprite):
         self.down_states = { 0: (0, 0, 52, 76), 1: (52, 0, 52, 76), 2: (156, 0, 52, 76) }
 
         self.vel = vec(0, 0)
-        self.pos = vec(x, y) * TILESIZE
+        self.pos = vec(x, y) * settings.TILESIZE
         self.state = 0
 
     def get_frame(self, frame_set):
@@ -29,9 +31,9 @@ class CharacterView(pg.sprite.Sprite):
 
     def clip(self, clipped_rect):
         if type(clipped_rect) is dict:
-            self.game.player_img.set_clip(pg.Rect(self.get_frame(clipped_rect)))
+            self.image_alpha.set_clip(pg.Rect(self.get_frame(clipped_rect)))
         else:
-            self.game.player_img.set_clip(pg.Rect(clipped_rect))
+            self.image_alpha.set_clip(pg.Rect(clipped_rect))
         return clipped_rect
 
     def pause(self, state):
@@ -47,22 +49,22 @@ class CharacterView(pg.sprite.Sprite):
         keys = pg.key.get_pressed()
         if keys[pg.K_LEFT] or keys[pg.K_a]:
             self.clip(self.left_states)
-            self.vel.x = -PLAYER_SPEED
-            self.image = self.game.player_img.subsurface(self.game.player_img.get_clip())
+            self.vel.x = -(settings.PLAYER_SPEED)
+            self.image = self.image_alpha.subsurface(self.image_alpha.get_clip())
         elif keys[pg.K_RIGHT] or keys[pg.K_d]:
             self.clip(self.right_states)
-            self.vel.x = PLAYER_SPEED
-            self.image = self.game.player_img.subsurface(self.game.player_img.get_clip())
+            self.vel.x = settings.PLAYER_SPEED
+            self.image = self.image_alpha.subsurface(self.image_alpha.get_clip())
         elif keys[pg.K_UP] or keys[pg.K_w]:
             self.clip(self.up_states)
-            self.vel.y = -PLAYER_SPEED
-            self.image = self.game.player_img.subsurface(self.game.player_img.get_clip())
+            self.vel.y = -(settings.PLAYER_SPEED)
+            self.image = self.image_alpha.subsurface(self.image_alpha.get_clip())
         elif keys[pg.K_DOWN] or keys[pg.K_s]:
             self.clip(self.down_states)
-            self.vel.y = PLAYER_SPEED
-            self.image = self.game.player_img.subsurface(self.game.player_img.get_clip())
+            self.vel.y = settings.PLAYER_SPEED
+            self.image = self.image_alpha.subsurface(self.image_alpha.get_clip())
 
-    def update(self):
+    def update(self, ):
         self.get_keys()
         self.pos+= self.vel * self.game.dt
         self.rect.x = self.pos.x

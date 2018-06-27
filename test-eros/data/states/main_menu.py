@@ -1,45 +1,48 @@
 import pygame as pg
-
 from ..import settings, tools
 from ..libraries import button, input
 
 class MainMenu(tools._State):
-    """Scene that plays our intro movie."""
     def __init__(self):
         tools._State.__init__(self)
+        self.quit = False
         self.next = None
         self.bgm = settings.MUSIC["menu"]
         self.font = pg.font.Font(settings.FONTS["Fixedsys500c"], 50)
         self.blink = False
         self.timer = 0.0
-        self.startup(self.timer, None)
         self.load_buttons()
+        # self.load_music()
 
-    def startup(self, current_time, persistant):
+    def load_music(self):
         pg.mixer.music.load(self.bgm)
         pg.mixer.music.play(-1)
-        return tools._State.startup(self, current_time, persistant)
+
+    def startup(self, current_time, persistant):
+        # pg.mixer.music.load(self.bgm)
+        # pg.mixer.music.play(-1)
+        # return tools._State.startup(self, current_time, persistant)
+        pass
 
     def cleanup(self):
         pg.mixer.music.stop()
         return tools._State.cleanup(self)
 
     def get_event(self, event):
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                self.done = True
-            if event.type == pg.KEYDOWN:
-                if event.key == pg.K_BACKSPACE:
-                    self.input_box.delete()
-                else:
-                    self.input_box.add(event.unicode)
-
-            elif event.type == pg.MOUSEBUTTONDOWN:
-                mouse_position = pg.mouse.get_pos()
-                self.button_start.click(mouse_position, self.start)
-                self.button_instructions.click(mouse_position, self.instructions)
-                self.button_high_score.click(mouse_position, self.high_score)
-                self.button_quit.click(mouse_position, self.quit)
+        if event.type == pg.QUIT:
+            self.done = True
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_BACKSPACE:
+                self.input_box.delete()
+            else:
+                self.input_box.add(event.unicode)
+        elif event.type == pg.MOUSEBUTTONDOWN:
+            mouse_position = pg.mouse.get_pos()
+            print(mouse_position)
+            self.button_start.click(mouse_position, self.start_game)
+            self.button_instructions.click(mouse_position, self.instructions)
+            self.button_high_score.click(mouse_position, self.high_score)
+            self.button_quit.click(mouse_position, self.end_game)
 
     def draw(self, surface):
         """Blit all items to the surface including the movie."""
@@ -59,17 +62,24 @@ class MainMenu(tools._State):
         self.draw(surface)
 
     def load_buttons(self):
-        self.button_start = button.Button("START", 450, 340, 140, 50, 25, 15, 2)
-        self.button_instructions = button.Button("INSTRUCTIONS", 425, 420, 230, 50, 10, 15, 2)
-        self.button_high_score = button.Button("HIGH SCORE", 440, 500, 200, 50, 10, 15, 2)
-        self.button_quit = button.Button("QUIT", 450, 580, 140, 50, 35, 15, 2)
-        self.input_box = input.Input("", 425, 250, 190, 50, 20, 15, 2, 11)
+        # self.input_box = input.Input("", 425, 250, 190, 50, 20, 15, 2, 11)
+        self.input_box = input.Input("", 280, 300, 250, 40, 20, 20, 2, 11)
+        self.button_start = button.Button("START", 300, 360, 220, 45, 80, 15, 2)
+        self.button_instructions = button.Button("INSTRUCTIONS", 300, 420, 220, 50, 25, 15, 2)
+        self.button_high_score = button.Button("HIGHSCORE", 300, 480, 220, 50, 45, 15, 2)
+        self.button_quit = button.Button("QUIT", 300, 540, 220, 50, 85, 15, 2)
+
+    def start_game(self):
+        self.next = "GAME"
+        self.done = True
 
     def high_score(self):
-        pass
+        self.next = "HIGH_SCORE"
+        self.done = True
 
     def instructions(self):
-        pass
-
-    def quit(self):
+        self.next = "INSTRUCTIONS"
         self.done = True
+
+    def end_game(self):
+        self.quit = True
