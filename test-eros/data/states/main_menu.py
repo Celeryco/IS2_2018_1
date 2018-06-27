@@ -66,7 +66,7 @@ class MainMenu(tools._State):
         self.input_box = input.Input("", 280, 300, 250, 40, 20, 20, 2, 11)
         self.button_start = button.Button("START", 300, 360, 220, 45, 80, 15, 2)
         self.button_instructions = button.Button("INSTRUCTIONS", 300, 420, 220, 50, 25, 15, 2)
-        self.button_high_score = button.Button("HIGHSCORE", 300, 480, 220, 50, 45, 15, 2)
+        self.button_high_score = button.Button("HIGHSCORES", 300, 480, 220, 50, 45, 15, 2)
         self.button_quit = button.Button("QUIT", 300, 540, 220, 50, 85, 15, 2)
 
     def start_game(self):

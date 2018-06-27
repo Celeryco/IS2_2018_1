@@ -68,6 +68,7 @@ class CharacterView(pg.sprite.Sprite):
         self.get_keys()
         self.pos+= self.vel * self.game.dt
         self.rect.x = self.pos.x
+        self.collide_with_powerup()
         self.collide_with_walls('x')
         self.rect.y = self.pos.y
         self.collide_with_walls('y')
@@ -91,3 +92,14 @@ class CharacterView(pg.sprite.Sprite):
                     self.pos.y = hits[0].rect.bottom
                 self.vel.y = 0
                 self.rect.y = self.pos.y
+
+    def collide_with_powerup(self):
+        hits = pg.sprite.spritecollide(self, self.game.powerups, False)
+        if hits:
+            print(hits[0].powerup.type)
+            if hits[0].powerup.type == "fire":
+                self.character.fire_lvl += hits[0].powerup.modifier
+                hits[0].kill()
+            if hits[0].powerup.type == "speed":
+                self.character.speed_lvl += hits[0].powerup.modifier
+                hits[0].kill()

@@ -2,8 +2,8 @@ import pygame as pg
 import sys
 from os import path
 from ..import settings, tools
-from ..models import player, character, bomb, map, wall
-from ..views import character_view, bomb_view, fire_view, map_view, wall_view
+from ..models import player, character, bomb, map, wall, powerup
+from ..views import character_view, bomb_view, fire_view, map_view, wall_view, powerup_view
 
 class Game(tools._State):
     def __init__(self):
@@ -42,19 +42,21 @@ class Game(tools._State):
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
+        self.powerups = pg.sprite.Group()
         for row, tiles in enumerate(self.map.data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    # View
                     wall_model = wall.Wall()
                     wall_view.WallView(wall_model, self, col, row)
                 if tile == 'P':
-                    # View
                     self.character = character.Character(settings.GFX['quintana'])
                     self.character_view = character_view.CharacterView(self.character, self, col, row)
-
-                # if tile = 'E':
-                #     self.enemy = enemy
+                if tile == 'F':
+                    powerup_model = powerup.Powerup(settings.GFX['fire-up'], "fire", 1)
+                    powerup_view.PowerupView(powerup_model, self, col, row)
+                if tile == 'S':
+                    powerup_model = powerup.Powerup(settings.GFX['speed-up'], "speed", 10)
+                    powerup_view.PowerupView(powerup_model, self, col, row)
 
     def get_event(self, event):
         # catch all events here
@@ -63,7 +65,7 @@ class Game(tools._State):
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_z and not self.stopped:
                 # View
-                bomb_model = bomb.Bomb(settings.GFX['bomb'])
+                bomb_model = bomb.Bomb(settings.GFX['bomb'], self.character.fire_lvl)
                 new_bomb = bomb_view.BombView(bomb_model, self, self.character_view.rect.x, self.character_view.rect.y)
                 self.bombs.append(new_bomb)
 
