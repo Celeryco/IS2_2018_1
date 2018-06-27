@@ -19,10 +19,9 @@ class MainMenu(tools._State):
         pg.mixer.music.play(-1)
 
     def startup(self, current_time, persistant):
-        # pg.mixer.music.load(self.bgm)
-        # pg.mixer.music.play(-1)
-        # return tools._State.startup(self, current_time, persistant)
-        pass
+        pg.mixer.music.load(self.bgm)
+        pg.mixer.music.play(-1)
+        return tools._State.startup(self, current_time, persistant)
 
     def cleanup(self):
         pg.mixer.music.stop()

@@ -51,7 +51,7 @@ class Game(tools._State):
                     wall_model = wall.Wall(breakable)
                     wall_view.WallView(wall_model, self, col, row)
                 if tile == 'P':
-                    self.character = character.Character(settings.GFX['quintana'])
+                    self.character = character.Character(settings.GFX['quintana'], settings.MUSIC['death_sound'])
                     self.character_view = character_view.CharacterView(self.character, self, col, row)
                 if tile == 'F':
                     powerup_model = powerup.Powerup(settings.GFX['fire-up'], "fire", 1)

@@ -70,6 +70,7 @@ class CharacterView(pg.sprite.Sprite):
         self.collide_with_walls('x')
         self.rect.y = self.pos.y
         self.collide_with_walls('y')
+        self.collied_with_enemy()
 
     def collide_with_walls(self, dir):
         if dir == 'x':
@@ -100,3 +101,10 @@ class CharacterView(pg.sprite.Sprite):
             if hits[0].powerup.type == "speed":
                 self.character.speed_lvl += hits[0].powerup.modifier
                 # hits[0].kill()
+
+    def collied_with_enemy(self):
+        hits = pg.sprite.spritecollide(self, self.game.enemies, False)
+        if hits:
+            # pg.mixer.music.load(self.character.character_scream)
+            # pg.mixer.music.play(-1)
+            self.kill()
