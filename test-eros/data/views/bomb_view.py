@@ -25,6 +25,8 @@ class BombView(pg.sprite.Sprite):
         if pg.time.get_ticks() - self.start > 4000:
             for fire in self.fires:
                 fire.kill()
+            self.fires.clear()
+
 
     # MODIFICAR EL FIRE
     def exploit(self):
@@ -37,10 +39,8 @@ class BombView(pg.sprite.Sprite):
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y + TILESIZE * i))
             for fire in self.fires:
                 pg.sprite.spritecollide(fire, self.game.enemies, True)
-
                 hits = pg.sprite.spritecollide(fire, self.game.walls, False)
-                if hits:
-                    if hits[0].wall.isBreakable:
-                        hits[0].kill()
-
+                for hit in hits:
+                    if hit.type == 'cabeza':
+                        hit.kill()
         self.kill()

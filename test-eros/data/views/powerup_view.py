@@ -11,5 +11,5 @@ class PowerupView(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
-        self.rect.x = x * TILESIZE
-        self.rect.y = y * TILESIZE
+        self.rect.x = x #* TILESIZE
+        self.rect.y = y #* TILESIZE

@@ -9,18 +9,24 @@ class CharacterView(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image_alpha = self.character.character_img
-        self.image_alpha.set_clip(pg.Rect(0, 0, 52, 76))
+        #self.image_alpha.set_clip(pg.Rect(0, 0, 63, 50))
+        self.image_alpha.set_clip(pg.Rect(0, 0, 21, 25))#
+
         self.image = self.image_alpha.subsurface(self.image_alpha.get_clip())
         self.rect = self.image.get_rect()
         self.frame = 0
 
-        self.right_states = { 0: (0, 76, 52, 76), 1: (52, 76, 52, 76), 2: (156, 76, 52, 76) }
-        self.left_states = { 0: (0, 152, 52, 76), 1: (52, 152, 52, 76), 2: (156, 152, 52, 76) }
-        self.up_states = { 0: (0, 228, 52, 76), 1: (52, 228, 52, 76), 2: (156, 228, 52, 76) }
-        self.down_states = { 0: (0, 0, 52, 76), 1: (52, 0, 52, 76), 2: (156, 0, 52, 76) }
+        #self.right_states = { 0: (0, 50, 63, 50), 1: (63, 50, 63, 50), 2: (156, 50, 63, 50) }
+        #self.left_states = { 0: (0, 163, 63, 50), 1: (63, 163, 63, 50), 2: (156, 163, 63, 50) }
+        #self.up_states = { 0: (0, 218, 63, 50), 1: (63, 218, 63, 50), 2: (156, 218, 63, 50) }
+        #self.down_states = { 0: (0, 0, 63, 50), 1: (63, 0, 63, 50), 2: (156, 0, 63, 50) }
+        self.right_states = { 0: (0, 25, 21, 25), 1: (21, 25, 21, 25), 2: (63, 25, 21, 25) } #
+        self.left_states = { 0: (0, 50, 21, 25), 1: (21, 50, 21, 25), 2: (63, 50, 21, 25) } #
+        self.up_states = { 0: (0, 75, 21, 25), 1: (21, 75, 21, 25), 2: (63, 75, 21, 25) } #
+        self.down_states = { 0: (0, 0, 21, 25), 1: (21, 0, 21, 25), 2: (63, 0, 21, 25) } #
 
         self.vel = vec(0, 0)
-        self.pos = vec(x, y) * settings.TILESIZE
+        self.pos = vec(x, y) #* settings.TILESIZE
         self.state = 0
 
     def get_frame(self, frame_set):

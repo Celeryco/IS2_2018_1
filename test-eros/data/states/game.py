@@ -6,7 +6,6 @@ from ..import settings, tools
 from ..models import player, character, bomb, map, wall, powerup, enemy
 from ..views import character_view, bomb_view, fire_view, map_view, wall_view, powerup_view, enemy_view
 
-
 class Game(tools._State):
     def __init__(self):
         tools._State.__init__(self)
@@ -36,7 +35,12 @@ class Game(tools._State):
 
     def load_data(self):
         game_folder = path.dirname(__file__)
-        self.map = map_view.MapView(path.join(game_folder, 'map.txt'))
+        #self.map = map_view.MapView(path.join(game_folder, 'map.txt'))
+        map_folder=path.join(game_folder,'maps') #
+        self.map = map_view.TiledMap(path.join(map_folder, 'tiles1-bomberman.tmx')) #
+        self.map_img=self.map.make_map() #
+        self.map_rect=self.map_img.get_rect() #
+
 
     def new(self):
         # initialize all variables and do all the setup for a new game
@@ -44,24 +48,46 @@ class Game(tools._State):
         self.walls = pg.sprite.Group()
         self.powerups = pg.sprite.Group()
         self.enemies = pg.sprite.Group()
-        for row, tiles in enumerate(self.map.data):
-            for col, tile in enumerate(tiles):
-                if tile == '1':
-                    breakable = bool(random.getrandbits(1))
-                    wall_model = wall.Wall(breakable)
-                    wall_view.WallView(wall_model, self, col, row)
-                if tile == 'P':
-                    self.character = character.Character(settings.GFX['quintana'], settings.MUSIC['death_sound'])
-                    self.character_view = character_view.CharacterView(self.character, self, col, row)
-                if tile == 'F':
-                    powerup_model = powerup.Powerup(settings.GFX['fire-up'], "fire", 1)
-                    powerup_view.PowerupView(powerup_model, self, col, row)
-                if tile == 'S':
-                    powerup_model = powerup.Powerup(settings.GFX['speed-up'], "speed", 10)
-                    powerup_view.PowerupView(powerup_model, self, col, row)
-                if tile == 'E':
-                    self.enemy = enemy.Enemy(settings.GFX['inca'])
-                    self.enemy_v = enemy_view.EnemyView(self.enemy, self, col, row)
+        #for row, tiles in enumerate(self.map.data):
+        #    for col, tile in enumerate(tiles):
+        #        if tile == '1':
+        #            breakable = bool(random.getrandbits(1))
+        #            wall_model = wall.Wall(breakable)
+        #            wall_view.WallView(wall_model, self, col, row)
+        #        if tile == 'P':
+        #            self.character = character.Character(settings.GFX['quintana'], settings.MUSIC['death_sound'])
+        #            self.character_view = character_view.CharacterView(self.character, self, col, row)
+        #        if tile == 'F':
+        #            powerup_model = powerup.Powerup(settings.GFX['fire-up'], "fire", 1)
+        #            powerup_view.PowerupView(powerup_model, self, col, row)
+        #        if tile == 'S':
+        #            powerup_model = powerup.Powerup(settings.GFX['speed-up'], "speed", 10)
+        #            powerup_view.PowerupView(powerup_model, self, col, row)
+        #        if tile == 'E':
+        #            self.enemy = enemy.Enemy(settings.GFX['inca'])
+        #            self.enemy_v = enemy_view.EnemyView(self.enemy, self, col, row)
+        for tile_object in self.map.tmxdata.objects: #
+            if tile_object.name == 'player':   #
+                #self.player = Player(self, tile_object.x, tile_object.y) #
+                self.character = character.Character(settings.GFX['quintana'], settings.MUSIC['death_sound'])
+                self.character_view = character_view.CharacterView(self.character, self, tile_object.x, tile_object.y)
+            if tile_object.name == 'roca' : #
+                wall_view.Obstacle('roca' ,self, tile_object.x, tile_object.y, #
+                         tile_object.width, tile_object.height) #
+            if tile_object.name == 'cabeza' : #
+                wall_view.Obstacle('cabeza',self, tile_object.x, tile_object.y, #
+                         tile_object.width, tile_object.height)#
+            if tile_object.name == 'fire':   #
+                powerup_model = powerup.Powerup(settings.GFX['fire-up'], "fire", 1)
+                powerup_view.PowerupView(powerup_model, self,  tile_object.x, tile_object.y)
+            if tile_object.name == 'speed':   #
+                powerup_model = powerup.Powerup(settings.GFX['speed-up'], "speed", 10)
+                powerup_view.PowerupView(powerup_model, self,  tile_object.x, tile_object.y)
+            if tile_object.name == 'enemigo':   #
+                self.enemy = enemy.Enemy(settings.GFX['inca'])
+                self.enemy_v = enemy_view.EnemyView(self.enemy, self, tile_object.x, tile_object.y)
+
+
 
 
     def get_event(self, event):
@@ -89,8 +115,10 @@ class Game(tools._State):
         self.draw(surface)
 
     def draw(self, surface):
+        #surface.fill(settings.BGCOLOR)
         surface.fill(settings.BGCOLOR)
-        self.draw_grid(surface)
+        surface.blit(self.map_img,(0,0)) ##
+    #    self.draw_grid(surface)
         self.all_sprites.draw(surface)
         if self.stopped:
             pause_text = pg.font.SysFont('Consolas', 32).render('Pause', True, pg.color.Color('White'))
@@ -102,11 +130,11 @@ class Game(tools._State):
         surface.blit(button_text, (10, 5))
         pg.display.flip()
 
-    def draw_grid(self, surface):
-        for x in range(0, settings.WIDTH, settings.TILESIZE):
-            pg.draw.line(surface, settings.LIGHTGREY, (x, 0), (x, settings.HEIGHT))
-        for y in range(0, settings.HEIGHT, settings.TILESIZE):
-            pg.draw.line(surface, settings.LIGHTGREY, (0, y), (settings.WIDTH, y))
+    #def draw_grid(self, surface):
+    #    for x in range(0, settings.WIDTH, settings.TILESIZE):
+    #        pg.draw.line(surface, settings.LIGHTGREY, (x, 0), (x, settings.HEIGHT))
+    #    for y in range(0, settings.HEIGHT, settings.TILESIZE):
+    #        pg.draw.line(surface, settings.LIGHTGREY, (0, y), (settings.WIDTH, y))
 
     def track_bombs(self):
         for bomb in self.bombs:
