@@ -31,6 +31,8 @@ class MainMenu(tools._State):
         if event.type == pg.QUIT:
             self.done = True
         if event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
+                self.done = True
             if event.key == pg.K_BACKSPACE:
                 self.input_box.delete()
             else:
@@ -62,14 +64,15 @@ class MainMenu(tools._State):
 
     def load_buttons(self):
         # self.input_box = input.Input("", 425, 250, 190, 50, 20, 15, 2, 11)
-        self.input_box = input.Input("", 280, 300, 250, 40, 20, 5, 2, 11)
+        self.input_box = input.Input("", 280, 300, 250, 40, 20, 5, 2, 15)
         self.button_start = button.Button("START", 300, 360, 220, 45, 70, 15, 2)
-        self.button_instructions = button.Button("INSTRUCTIONS", 300, 420, 220, 50, 5, 15, 2)
-        self.button_high_score = button.Button("HIGHSCORES", 300, 480, 220, 50, 30, 15, 2)
+        self.button_instructions = button.Button("INSTRUCTIONS", 300, 420, 220, 50, 20, 15, 2)
+        self.button_high_score = button.Button("HIGHSCORES", 300, 480, 220, 50, 35, 15, 2)
         self.button_quit = button.Button("QUIT", 300, 540, 220, 50, 75, 15, 2)
 
     def start_game(self):
         self.next = "GAME"
+        self.persist = {"player_name" : self.input_box.text}
         self.done = True
 
     def high_score(self):

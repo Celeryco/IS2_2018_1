@@ -67,7 +67,6 @@ def powerups_draw(position_x, position_y):
     desc_font = pygame.font.Font(None, 20)
 
     for powerup in arrayPowerups:
-
         powerup.image = pygame.transform.scale(powerup.image, (40, 40))
         desc_powerup = desc_font.render(powerup.description , 0 , (0,0,0))
 

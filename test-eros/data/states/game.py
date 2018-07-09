@@ -18,7 +18,6 @@ class Game(tools._State):
         self.bombs = []
         self.stopped = 0
         self.stopped_time = 0
-        self.player = player.Player("Quintana")
         self.load_data()
         self.new()
 
@@ -29,6 +28,7 @@ class Game(tools._State):
 
     def startup(self, current_time, persistant):
         self.load_data()
+        self.player = player.Player(persistant["player_name"])
         pg.mixer.music.load(self.bgm)
         pg.mixer.music.play(-1)
         return tools._State.startup(self, current_time, persistant)
@@ -87,14 +87,13 @@ class Game(tools._State):
                 self.enemy = enemy.Enemy(settings.GFX['inca'])
                 self.enemy_v = enemy_view.EnemyView(self.enemy, self, tile_object.x, tile_object.y)
 
-
-
-
     def get_event(self, event):
         # catch all events here
         if event.type == pg.QUIT:
             self.state.done = True
         if event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
+                self.state.done = True
             if event.key == pg.K_z and not self.stopped:
                 # View
                 bomb_model = bomb.Bomb(settings.GFX['bomb'], self.character.fire_lvl)
@@ -130,7 +129,7 @@ class Game(tools._State):
         surface.blit(button_text, (10, 5))
         pg.display.flip()
 
-    #def draw_grid(self, surface):
+    # def draw_grid(self, surface):
     #    for x in range(0, settings.WIDTH, settings.TILESIZE):
     #        pg.draw.line(surface, settings.LIGHTGREY, (x, 0), (x, settings.HEIGHT))
     #    for y in range(0, settings.HEIGHT, settings.TILESIZE):

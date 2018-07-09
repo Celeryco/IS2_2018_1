@@ -28,6 +28,9 @@ class HighScore(tools._State):
     def get_event(self, event):
         if event.type == pg.QUIT:
             self.done = True
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
+                self.done = True
         elif event.type == pg.MOUSEBUTTONDOWN:
             mouse_position = pg.mouse.get_pos()
             self.button_back.click(mouse_position, self.go_main_menu)
@@ -35,7 +38,6 @@ class HighScore(tools._State):
     def draw(self, surface):
         """Blit all items to the surface including the movie."""
         surface.fill(settings.BGCOLOR)
-
         # Draw rectangles
         # pg.draw.rect(surface, settings.GREEN, ((50,150),(300, 300)), 5)
         # pg.draw.rect(surface, settings.GREEN, ((450,150),(300, 300)), 5)
@@ -53,7 +55,7 @@ class HighScore(tools._State):
         #     display.blit(score_name,(pos_x, pos_y))
         #     display.blit(score_map, (pos_x + 50, pos_y + 15))
         #     pos_y = pos_y + 50
-        title = self.font.render(self.title , 0 , (185, 204, 81))
+        title = self.font.render(self.title , 0 , settings.GREEN)
         surface.blit(title, (290, 70))
 
         name = desc_font.render("Name" , 0 , (255,255,255))
@@ -71,9 +73,6 @@ class HighScore(tools._State):
         surface.blit(desc_name, (300, 200))
         surface.blit(desc_map, (400, 200))
         surface.blit(desc_score, (510, 200))
-
-
-
 
     def update(self, surface, keys, current_time, time_delta):
         self.current_time = current_time
