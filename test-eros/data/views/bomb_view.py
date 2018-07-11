@@ -3,11 +3,12 @@ import pygame as pg
 from ..settings import *
 from ..models.fire import Fire
 from . import fire_view
+import math
 
 class BombView(pg.sprite.Sprite):
     def __init__(self, bomb, game, x, y):
         self.bomb = bomb
-        self.groups = game.all_sprites
+        self.groups = game.all_sprites, game.walls
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = self.bomb.sprite
@@ -31,13 +32,21 @@ class BombView(pg.sprite.Sprite):
     # MODIFICAR EL FIRE
     def exploit(self):
         fire_model = Fire(GFX['fire'])
-        self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y))
+        fire = fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y)
+        self.fires.append(fire_view)
+
+        dist_right = math.hypot(self.game.walls.rect.x - self.rect.x, self.game.walls.rect.y - self.rect.y)
+        print(dist_right)
+
         for i in range(self.level):
+
+
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y - TILESIZE * i))
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x - TILESIZE * i, self.rect.y))
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x + TILESIZE * i, self.rect.y))
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y + TILESIZE * i))
             for fire in self.fires:
+                pg.sprite.spritecollide(fire, self.game.all_sprites, True)
                 pg.sprite.spritecollide(fire, self.game.enemies, True)
                 hits = pg.sprite.spritecollide(fire, self.game.walls, False)
                 for hit in hits:

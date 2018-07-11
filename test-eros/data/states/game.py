@@ -95,8 +95,6 @@ class Game(tools._State):
             if event.key == pg.K_ESCAPE:
                 self.state.done = True
             if event.key == pg.K_z and not self.stopped:
-                if len(self.bombs.count) <= self.:
-                    pass
                 # View
                 bomb_model = bomb.Bomb(settings.GFX['bomb'], self.character.fire_lvl)
                 new_bomb = bomb_view.BombView(bomb_model, self, self.character_view.rect.x, self.character_view.rect.y)
