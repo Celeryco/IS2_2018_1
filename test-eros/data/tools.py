@@ -2,7 +2,6 @@
 This module contains the fundamental Control class and a prototype class
 for States.  Also contained here are resource loading functions.
 """
-
 import os
 import pygame as pg
 

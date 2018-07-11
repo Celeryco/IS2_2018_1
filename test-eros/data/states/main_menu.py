@@ -79,7 +79,6 @@ class MainMenu(tools._State):
         self.button_options = button.Button("OPTIONS", x, y + (60*4), 220, 50, 55, 15, 2)
         self.button_quit = button.Button("QUIT", x, y + (60*5), 220, 50, 75, 15, 2)
 
-
     def start_game(self):
         self.next = "GAME_SETTINGS"
         self.persist = {"player_name" : self.input_box.text}

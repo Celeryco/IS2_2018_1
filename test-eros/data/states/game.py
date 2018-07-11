@@ -69,7 +69,7 @@ class Game(tools._State):
         for tile_object in self.map.tmxdata.objects: #
             if tile_object.name == 'player':   #
                 #self.player = Player(self, tile_object.x, tile_object.y) #
-                self.character = character.Character(settings.GFX['quintana'], settings.MUSIC['death_sound'])
+                self.character = character.Character(settings.GFX['quintana'], settings.SFX['death_sound'])
                 self.character_view = character_view.CharacterView(self.character, self, tile_object.x, tile_object.y)
             if tile_object.name == 'roca' : #
                 wall_view.Obstacle('roca' ,self, tile_object.x, tile_object.y, #
@@ -95,6 +95,8 @@ class Game(tools._State):
             if event.key == pg.K_ESCAPE:
                 self.state.done = True
             if event.key == pg.K_z and not self.stopped:
+                if len(self.bombs.count) <= self.:
+                    pass
                 # View
                 bomb_model = bomb.Bomb(settings.GFX['bomb'], self.character.fire_lvl)
                 new_bomb = bomb_view.BombView(bomb_model, self, self.character_view.rect.x, self.character_view.rect.y)

@@ -2,6 +2,7 @@ import pygame as pg
 from ..import settings, tools
 from ..libraries import button
 
+
 class HighScore(tools._State):
     def __init__(self):
         tools._State.__init__(self)

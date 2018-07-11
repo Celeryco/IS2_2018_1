@@ -94,4 +94,5 @@ class InstructionsMenu(tools._State):
         self.done = True
 
     def instructions_next(self):
-        pass
+        self.next = "INSTRUCTIONS_2"
+        self.done = True
