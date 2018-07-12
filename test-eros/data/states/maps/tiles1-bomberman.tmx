@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="25" height="20" tilewidth="32" tileheight="30" infinite="0" nextobjectid="145">
+ <tileset firstgid="1" source="bomberman-spritess.tsx"/>
+ <layer name="arena" width="25" height="20">
+  <data encoding="csv">
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30
+</data>
+ </layer>
+ <layer name="cabezas clavas" width="25" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,13,13,0,13,0,13,0,0,0,13,13,13,0,0,13,0,13,13,0,0,0,0,
+0,0,0,13,0,13,0,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,13,0,0,0,0,13,0,0,0,0,0,13,0,0,0,0,0,0,13,0,0,0,0,0,
+0,13,0,0,0,0,13,0,0,0,0,13,0,0,13,13,0,13,0,0,0,0,0,13,0,
+0,0,0,0,0,0,0,13,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,0,
+0,0,13,13,0,0,0,0,13,0,0,13,0,0,13,0,0,13,0,13,0,0,13,0,0,
+0,0,13,0,0,0,0,0,0,0,0,0,0,0,13,0,0,13,0,0,0,0,13,0,0,
+0,0,0,0,0,0,0,13,0,0,13,0,0,0,0,0,0,13,0,13,0,0,0,13,0,
+0,13,0,0,0,0,13,0,0,13,0,0,0,0,13,0,13,0,13,0,13,0,0,0,0,
+0,0,0,0,13,0,0,0,0,0,0,0,0,13,0,13,0,0,0,0,0,0,0,13,0,
+0,13,0,0,0,13,0,13,0,13,13,0,0,0,0,0,0,0,13,13,0,0,0,13,0,
+0,0,0,0,13,0,0,0,0,0,13,13,0,0,13,0,0,0,0,13,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,13,0,0,0,0,0,13,0,0,
+0,0,0,0,13,0,0,13,0,0,0,0,13,0,0,13,0,0,0,0,0,0,0,13,0,
+0,0,13,0,0,0,0,13,13,0,13,0,0,0,13,0,0,13,0,0,13,0,0,0,0,
+0,0,13,0,0,0,0,0,0,0,0,0,0,13,0,0,0,0,0,0,0,13,0,0,0,
+0,0,0,0,0,0,0,13,0,0,0,0,0,0,0,0,0,13,0,0,0,0,13,0,0,
+0,0,0,13,0,0,0,0,0,13,13,0,0,13,0,0,0,0,13,13,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="rocas" width="25" height="20">
+  <data encoding="csv">
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+25,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,25,
+25,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,25,
+25,0,0,25,0,25,0,0,0,0,25,0,0,0,25,0,25,0,25,0,25,0,25,0,25,
+25,0,0,25,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,25,
+25,25,0,25,0,25,0,0,0,0,25,0,0,25,25,0,0,0,0,0,0,0,0,0,25,
+25,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,25,0,0,0,0,0,25,
+25,25,0,25,0,25,0,0,25,0,0,0,0,25,0,25,0,0,0,0,0,25,0,0,25,
+25,0,0,0,0,25,0,0,0,0,0,0,25,0,0,25,0,0,0,0,0,0,0,0,25,
+25,0,25,25,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,25,
+25,0,25,0,0,0,0,0,25,25,0,0,25,0,0,0,0,0,25,25,25,0,0,0,25,
+25,0,0,25,0,25,0,0,0,0,0,0,25,0,0,0,25,0,0,0,0,0,25,0,25,
+25,0,25,0,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,25,
+25,0,0,25,0,25,0,0,0,25,25,0,0,0,25,0,0,0,25,0,25,0,0,0,25,
+25,0,0,0,0,0,0,0,0,0,0,0,0,25,25,0,0,0,0,0,0,0,0,0,25,
+25,25,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,25,
+25,0,0,25,0,25,0,0,25,0,0,0,25,0,0,25,0,0,25,0,25,0,0,0,25,
+25,0,0,0,25,0,25,0,0,0,25,0,0,0,0,0,0,0,0,0,0,0,0,0,25,
+25,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,25,0,0,0,0,25,0,0,25,
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25
+</data>
+ </layer>
+ <objectgroup name="obstaculos">
+  <object id="1" name="roca" x="0" y="0" width="800" height="30"/>
+  <object id="5" name="roca" x="768" y="30" width="32" height="570"/>
+  <object id="6" name="roca" x="0" y="570" width="768" height="30"/>
+  <object id="7" name="roca" x="0" y="30" width="32" height="540"/>
+  <object id="8" name="roca" x="96" y="90" width="32" height="90"/>
+  <object id="9" name="roca" x="256" y="60" width="32" height="30"/>
+  <object id="10" name="roca" x="320" y="90" width="32" height="30"/>
+  <object id="11" name="roca" x="448" y="90" width="32" height="30"/>
+  <object id="12" name="roca" x="512" y="60" width="32" height="60"/>
+  <object id="13" name="roca" x="576" y="90" width="32" height="30"/>
+  <object id="14" name="roca" x="640" y="90" width="32" height="60"/>
+  <object id="15" name="roca" x="704" y="90" width="32" height="30"/>
+  <object id="16" name="roca" x="384" y="30" width="32" height="30"/>
+  <object id="17" name="roca" x="32" y="150" width="32" height="30"/>
+  <object id="18" name="roca" x="32" y="210" width="32" height="30"/>
+  <object id="19" name="roca" x="96" y="210" width="32" height="30"/>
+  <object id="20" name="roca" x="160" y="90" width="32" height="30"/>
+  <object id="21" name="roca" x="160" y="150" width="32" height="30"/>
+  <object id="22" name="roca" x="256" y="120" width="32" height="30"/>
+  <object id="23" name="roca" x="320" y="150" width="32" height="30"/>
+  <object id="24" name="roca" x="160" y="210" width="32" height="90"/>
+  <object id="26" name="roca" x="64" y="270" width="64" height="30"/>
+  <object id="27" name="roca" x="64" y="300" width="32" height="30"/>
+  <object id="28" name="roca" x="416" y="150" width="32" height="90"/>
+  <object id="29" name="roca" x="448" y="150" width="32" height="30"/>
+  <object id="30" name="roca" x="672" y="210" width="32" height="30"/>
+  <object id="31" name="roca" x="576" y="180" width="32" height="30"/>
+  <object id="32" name="roca" x="480" y="210" width="32" height="60"/>
+  <object id="33" name="roca" x="384" y="240" width="32" height="30"/>
+  <object id="34" name="roca" x="256" y="210" width="32" height="30"/>
+  <object id="35" name="roca" x="256" y="300" width="64" height="30"/>
+  <object id="36" name="roca" x="96" y="330" width="32" height="30"/>
+  <object id="37" name="roca" x="64" y="360" width="32" height="30"/>
+  <object id="38" name="roca" x="96" y="390" width="32" height="30"/>
+  <object id="39" name="roca" x="32" y="450" width="32" height="30"/>
+  <object id="40" name="roca" x="96" y="480" width="32" height="30"/>
+  <object id="41" name="roca" x="160" y="390" width="32" height="30"/>
+  <object id="42" name="roca" x="160" y="330" width="32" height="30"/>
+  <object id="43" name="roca" x="224" y="360" width="32" height="30"/>
+  <object id="44" name="roca" x="288" y="390" width="64" height="30"/>
+  <object id="45" name="roca" x="160" y="450" width="32" height="60"/>
+  <object id="46" name="roca" x="128" y="510" width="32" height="30"/>
+  <object id="47" name="roca" x="192" y="510" width="32" height="30"/>
+  <object id="48" name="roca" x="256" y="480" width="32" height="30"/>
+  <object id="49" name="roca" x="256" y="540" width="32" height="30"/>
+  <object id="50" name="roca" x="320" y="510" width="32" height="30"/>
+  <object id="51" name="roca" x="384" y="480" width="32" height="30"/>
+  <object id="52" name="roca" x="416" y="420" width="64" height="30"/>
+  <object id="53" name="roca" x="384" y="300" width="32" height="60"/>
+  <object id="54" name="roca" x="512" y="330" width="32" height="30"/>
+  <object id="55" name="roca" x="448" y="390" width="32" height="30"/>
+  <object id="56" name="roca" x="512" y="540" width="32" height="30"/>
+  <object id="57" name="roca" x="480" y="480" width="32" height="30"/>
+  <object id="60" name="roca" x="576" y="480" width="32" height="30"/>
+  <object id="61" name="roca" x="576" y="390" width="32" height="30"/>
+  <object id="62" name="roca" x="576" y="300" width="96" height="30"/>
+  <object id="63" name="roca" x="704" y="270" width="32" height="30"/>
+  <object id="64" name="roca" x="704" y="330" width="32" height="60"/>
+  <object id="65" name="roca" x="640" y="390" width="32" height="30"/>
+  <object id="66" name="roca" x="704" y="450" width="32" height="30"/>
+  <object id="67" name="roca" x="640" y="480" width="32" height="30"/>
+  <object id="68" name="roca" x="672" y="540" width="32" height="30"/>
+  <object id="69" name="player" x="32" y="30" width="32" height="30"/>
+  <object id="70" name="cabeza" x="96" y="30" width="64" height="30"/>
+  <object id="71" name="cabeza" x="192" y="30" width="32" height="30"/>
+  <object id="72" name="cabeza" x="416" y="30" width="64" height="30"/>
+  <object id="73" name="cabeza" x="544" y="30" width="32" height="30"/>
+  <object id="74" name="cabeza" x="608" y="30" width="64" height="30"/>
+  <object id="75" name="cabeza" x="608" y="90" width="32" height="30"/>
+  <object id="76" name="cabeza" x="736" y="120" width="32" height="30"/>
+  <object id="77" name="cabeza" x="384" y="90" width="32" height="30"/>
+  <object id="78" name="cabeza" x="352" y="120" width="32" height="30"/>
+  <object id="79" name="cabeza" x="192" y="90" width="32" height="60"/>
+  <object id="80" name="cabeza" x="96" y="60" width="32" height="30"/>
+  <object id="81" name="cabeza" x="160" y="60" width="32" height="30"/>
+  <object id="82" name="cabeza" x="64" y="180" width="32" height="60"/>
+  <object id="83" name="cabeza" x="32" y="90" width="32" height="30"/>
+  <object id="84" name="cabeza" x="224" y="150" width="32" height="30"/>
+  <object id="85" name="cabeza" x="224" y="240" width="32" height="30"/>
+  <object id="86" name="cabeza" x="192" y="270" width="32" height="30"/>
+  <object id="87" name="cabeza" x="128" y="300" width="32" height="30"/>
+  <object id="88" name="cabeza" x="32" y="270" width="32" height="30"/>
+  <object id="89" name="cabeza" x="32" y="330" width="32" height="30"/>
+  <object id="90" name="cabeza" x="64" y="450" width="32" height="60"/>
+  <object id="91" name="cabeza" x="128" y="360" width="32" height="30"/>
+  <object id="92" name="cabeza" x="128" y="420" width="32" height="30"/>
+  <object id="93" name="cabeza" x="96" y="540" width="32" height="30"/>
+  <object id="94" name="cabeza" x="224" y="420" width="32" height="60"/>
+  <object id="95" name="cabeza" x="224" y="510" width="32" height="30"/>
+  <object id="96" name="cabeza" x="320" y="450" width="32" height="30"/>
+  <object id="97" name="cabeza" x="288" y="540" width="64" height="30"/>
+  <object id="98" name="cabeza" x="288" y="330" width="64" height="30"/>
+  <object id="99" name="cabeza" x="320" y="360" width="64" height="30"/>
+  <object id="100" name="cabeza" x="288" y="270" width="32" height="30"/>
+  <object id="101" name="cabeza" x="320" y="240" width="32" height="30"/>
+  <object id="102" name="cabeza" x="352" y="180" width="32" height="30"/>
+  <object id="103" name="cabeza" x="416" y="540" width="32" height="30"/>
+  <object id="104" name="cabeza" x="416" y="480" width="32" height="30"/>
+  <object id="105" name="cabeza" x="384" y="420" width="32" height="30"/>
+  <object id="106" name="cabeza" x="448" y="180" width="32" height="60"/>
+  <object id="107" name="cabeza" x="448" y="120" width="64" height="30"/>
+  <object id="108" name="cabeza" x="544" y="120" width="32" height="30"/>
+  <object id="109" name="cabeza" x="672" y="150" width="32" height="30"/>
+  <object id="110" name="cabeza" x="544" y="180" width="32" height="90"/>
+  <object id="111" name="cabeza" x="608" y="180" width="32" height="30"/>
+  <object id="112" name="cabeza" x="704" y="180" width="32" height="60"/>
+  <object id="113" name="cabeza" x="736" y="240" width="32" height="30"/>
+  <object id="114" name="cabeza" x="608" y="240" width="32" height="30"/>
+  <object id="115" name="cabeza" x="576" y="270" width="32" height="30"/>
+  <object id="116" name="cabeza" x="640" y="270" width="32" height="30"/>
+  <object id="117" name="cabeza" x="448" y="270" width="32" height="30"/>
+  <object id="118" name="cabeza" x="512" y="270" width="32" height="30"/>
+  <object id="119" name="cabeza" x="416" y="300" width="32" height="30"/>
+  <object id="120" name="cabeza" x="480" y="300" width="32" height="30"/>
+  <object id="121" name="cabeza" x="576" y="330" width="64" height="30"/>
+  <object id="122" name="cabeza" x="608" y="360" width="32" height="30"/>
+  <object id="123" name="cabeza" x="704" y="390" width="32" height="30"/>
+  <object id="124" name="cabeza" x="736" y="420" width="32" height="30"/>
+  <object id="125" name="cabeza" x="480" y="390" width="64" height="30"/>
+  <object id="126" name="cabeza" x="480" y="420" width="32" height="30"/>
+  <object id="127" name="cabeza" x="448" y="450" width="32" height="30"/>
+  <object id="128" name="cabeza" x="448" y="360" width="32" height="30"/>
+  <object id="130" name="cabeza" x="544" y="510" width="32" height="30"/>
+  <object id="131" name="cabeza" x="544" y="450" width="32" height="30"/>
+  <object id="132" name="cabeza" x="640" y="450" width="32" height="30"/>
+  <object id="133" name="cabeza" x="672" y="480" width="32" height="30"/>
+  <object id="134" name="cabeza" x="576" y="540" width="64" height="30"/>
+  <object id="135" name="cabeza" x="704" y="510" width="32" height="30"/>
+  <object id="136" name="cabeza" x="288" y="60" width="32" height="30"/>
+  <object id="138" name="speed" x="354" y="268" width="29" height="32"/>
+  <object id="139" name="speed" x="194" y="393" width="28" height="25"/>
+  <object id="140" name="speed" x="417" y="366" width="28" height="25"/>
+  <object id="141" name="fire" x="355" y="453" width="26" height="26"/>
+  <object id="142" name="fire" x="548" y="335" width="24" height="24"/>
+  <object id="143" name="enemigo" x="695" y="52" width="21" height="19"/>
+  <object id="144" name="fire" x="611" y="426" width="22" height="18"/>
+ </objectgroup>
+</map>
