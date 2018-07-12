@@ -25,7 +25,7 @@ from ..settings import *
 #            self.image.fill(GREEN)
 #        return self.image
 
-class Obstacle(pg.sprite.Sprite):
+class ObstacleView(pg.sprite.Sprite):
     def __init__(self, type ,game, x, y, w, h):
         self.groups =  game.walls
         self.type = type

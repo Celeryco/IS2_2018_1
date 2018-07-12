@@ -90,10 +90,10 @@ class Game(tools._State):
     def get_event(self, event):
         # catch all events here
         if event.type == pg.QUIT:
-            self.state.done = True
+            self.quit = True
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_ESCAPE:
-                self.state.done = True
+                self.quit = True
             if event.key == pg.K_z and not self.stopped:
                 # View
                 bomb_model = bomb.Bomb(settings.GFX['bomb'], self.character.fire_lvl)
@@ -136,8 +136,8 @@ class Game(tools._State):
     #        pg.draw.line(surface, settings.LIGHTGREY, (0, y), (settings.WIDTH, y))
 
     def track_bombs(self):
-        for bomb in self.bombs:
-            bomb.track()
+        for index, bomb in enumerate(self.bombs):
+            bomb.track(self.bombs, index)
 
     def update_bombs_start(self):
         for bomb in self.bombs:

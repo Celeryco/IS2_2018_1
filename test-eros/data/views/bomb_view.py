@@ -19,37 +19,34 @@ class BombView(pg.sprite.Sprite):
         self.fires = []
         self.level = self.bomb.fire_lvl
 
-    def track(self):
+    def track(self, bomb_list, index):
         if pg.time.get_ticks() - self.start > 3000:
+            self.kill()
             self.exploit()
 
         if pg.time.get_ticks() - self.start > 4000:
             for fire in self.fires:
                 fire.kill()
             self.fires.clear()
-
+            bomb_list.pop(index)
 
     # MODIFICAR EL FIRE
     def exploit(self):
         fire_model = Fire(GFX['fire'])
         fire = fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y)
-        self.fires.append(fire_view)
-
-        dist_right = math.hypot(self.game.walls.rect.x - self.rect.x, self.game.walls.rect.y - self.rect.y)
-        print(dist_right)
-
+        self.fires.append(fire)
+        # dist_right = math.hypot(self.game.walls.rect.x - self.rect.x, self.game.walls.rect.y - self.rect.y)
+        # print(dist_right)
         for i in range(self.level):
-
-
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y - TILESIZE * i))
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x - TILESIZE * i, self.rect.y))
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x + TILESIZE * i, self.rect.y))
             self.fires.append(fire_view.FireView(fire_model, self.game, self.rect.x, self.rect.y + TILESIZE * i))
             for fire in self.fires:
-                pg.sprite.spritecollide(fire, self.game.all_sprites, True)
+                # pg.sprite.spritecollide(fire, self.game.all_sprites, True)
                 pg.sprite.spritecollide(fire, self.game.enemies, True)
                 hits = pg.sprite.spritecollide(fire, self.game.walls, False)
+                print(hits)
                 for hit in hits:
                     if hit.type == 'cabeza':
                         hit.kill()
-        self.kill()

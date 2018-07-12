@@ -1,4 +1,7 @@
 """
+CODIGO OBTENIDO DE https://github.com/Mekire/pygame-mutiscene-template-with-movie/blob/master/data/tools.py
+
+
 This module contains the fundamental Control class and a prototype class
 for States.  Also contained here are resource loading functions.
 """
@@ -142,6 +145,13 @@ def load_all_gfx(directory,colorkey=(255,0,255),accept=(".png",".jpg",".bmp")):
             graphics[name]=img
     return graphics
 
+def get_pics(directory,colorkey=(255,0,255),accept=(".png",".jpg",".bmp")):
+    list = []
+    for pic in os.listdir(directory):
+        temp = (directory + "\\" + pic)
+        print(temp)
+        list.append(temp)
+    return list
 
 def load_all_music(directory, accept=(".wav", ".mp3", ".ogg", ".mdi")):
     """Create a dictionary of paths to music files in given directory
@@ -154,16 +164,21 @@ def load_all_music(directory, accept=(".wav", ".mp3", ".ogg", ".mdi")):
     return songs
 
 
-def load_all_fonts(directory, accept=(".ttf",)):
+def load_all_fonts(directory, accept=(".ttf")):
     """Create a dictionary of paths to font files in given directory
     if their extensions are in accept."""
-    return load_all_music(directory, accept)
+    fonts = {}
+    print(directory)
+    for font in os.listdir(directory):
+        name,ext = os.path.splitext(font)
+        if ext.lower() in accept:
+            fonts[name] = os.path.join(directory, font)
+    return fonts
 
-
-def load_all_movies(directory, accept=(".mpg",)):
-    """Create a dictionary of paths to movie files in given directory
-    if their extensions are in accept."""
-    return load_all_music(directory, accept)
+# def load_all_movies(directory, accept=(".mpg",)):
+#     """Create a dictionary of paths to movie files in given directory
+#     if their extensions are in accept."""
+#     return load_all_music(directory, accept)
 
 
 def load_all_sfx(directory, accept=(".wav", ".mp3", ".ogg", ".mdi")):
